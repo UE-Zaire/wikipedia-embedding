@@ -4,6 +4,7 @@ from sklearn.manifold import spectral_embedding
 from sklearn.cluster import spectral_clustering
 import matplotlib.colors as colors
 import matplotlib.cm as cmx
+import numpy as np
 
 NUM_CLUSTERS = 10
 
@@ -72,4 +73,7 @@ else:
     ax.scatter(x[:, 0], x[:, 1], c=clusters, zorder=2)
 
 plt.show()
+
+open('clusters%s.csv' % NUM_CLUSTERS, 'w').write('\n'.join(str(int(c)) for c in clusters))
+np.savetxt('embedding.csv', x, delimiter=',')
 
